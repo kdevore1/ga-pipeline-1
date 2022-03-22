@@ -1,3 +1,6 @@
+# Large Raw Data files
+*.fastq.gz
+
 # History files
 .Rhistory
 .Rapp.history
