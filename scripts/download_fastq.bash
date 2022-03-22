@@ -23,3 +23,5 @@ fi
 if [ ! -f SRR2584866_2.fastq.gz ]; then
   curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz
 fi
+
+md5sum -c < CHECKSUMS.MD5
