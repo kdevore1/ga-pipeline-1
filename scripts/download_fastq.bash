@@ -1,27 +1,16 @@
-cd data/untrimmed_fastq
+# Changing directories
+cd ~/dc_workshop/ga-pipeline-1/data/untrimmed_fastq 
 
-if [ ! -f SRR2589044_1.fastq.gz ]; then 
-  curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
-fi
+# Read the meta-data file line by line and download the file if it doesn't exist.
+# The while loop will loop over each line, and populate a `filename` and a `url` variable from each line.
 
-if [ ! -f SRR2589044_2.fastq.gz ]; then
-  curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
-fi
+while read filename url; do
+  if [ ! -f "$filename" ]; then
+    echo Downloading "$filename" ...
+    curl -o "$filename" "$url"
+  fi
+done < data_urls.txt
 
-if [ ! -f SRR2584863_1.fastq.gz ]; then
-  curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_1.fastq.gz
-fi
-
-if [ ! -f SRR2584863_2.fastq.gz ]; then
-  curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_2.fastq.gz
-fi
-
-if [ ! -f SRR2584866_1.fastq.gz ]; then
-  curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_1.fastq.gz
-fi
-
-if [ ! -f SRR2584866_2.fastq.gz ]; then
-  curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz
-fi
+echo Validating Files ...
 
 md5sum -c < CHECKSUMS.MD5
