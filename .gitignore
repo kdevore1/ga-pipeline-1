@@ -1,8 +1,13 @@
 # Large Raw Data files
 *.fastq.gz
 
+# Job output / error report
 slurm.*.out
 slurm.*.err
+
+# Data directory
+data/ref_genome/*
+data/bam/*
 
 # History files
 .Rhistory
