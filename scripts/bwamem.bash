@@ -5,7 +5,7 @@
 
 #SBATCH -N 1  # number of nodes
 #SBATCH -n 1  # number of "tasks" (default: allocates 1 core per task)
-#SBATCH -t 0-04:00:00   # time in d-hh:mm:ss
+#SBATCH -t 0-00:20:00   # time in d-hh:mm:ss
 #SBATCH -p serial       # partition 
 #SBATCH -q normal       # QOS
 #SBATCH -o slurm.%j.out # file to save job's STDOUT (%j = JobId)
@@ -13,7 +13,6 @@
 #SBATCH --mail-type=ALL # Send an e-mail when a job starts, stops, or fails
 #SBATCH --mail-user=kdevore1@asu.edu # Mail-to address
 #SBATCH --export=NONE   # Purge the job-submitting shell environment
-
 
 # Load Modules
 module purge
